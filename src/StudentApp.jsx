@@ -1,44 +1,43 @@
 import React, { Component } from 'react'
 import './StudentApp.css'
-
 export default class StudentApp extends Component {
-    constructor(){
-        super();
-        this.state = {
-            showGrades:false,
-            student:{
-                name:"P.Narendra",
-                id:"2500090288",
-                department:"Computer Science",
-                cgpa:9.9,
-                courses:["Algorithms","Database System","UI/UX Design"]
-            }
-        };
+  constructor(){
+    super();
+    this.state={
+      showGrades: false,
+      student:{
+        name:"P.Narendra",
+        id:"2500090288",
+        department:"cse",
+        cgpa:9.17,
+        courses:["alogorithms","database systems","ui/ux design"]
+      }
     }
-    toggleGrades = () => {
-      this.setState((prevState) => ({ showGrades: !prevState.showGrades }));
-    };
+  }
+  toggleGrades=()=>{
+    this.setState({showGrades:!this.state.showGrades})
+  }
   render() {
-    const { student, showGrades } = this.state;
+    const {student,showGrades}=this.state;
     return (
       <div className="card">
-        <h2>{student.name}</h2>
-        <p><strong>ID:</strong> {student.id}</p>
-        <p><strong>Department:</strong> {student.department}</p>
-         
-         {showGrades && (
-          <div className="grades">
-            <p><strong>CGPA:</strong> {student.cgpa}</p>
-            <p><strong>Enrolled courses:</strong></p>
+        <h2>Student.name</h2>
+        <p><strong>ID:</strong>{student.id}</p>
+        <p><strong>Department:</strong>{student.department}</p>
+        <p><strong>CGPA:</strong>{student.cgpa}</p>
+        {showGrades && (
+          <div className='details'>
+            <p><strong>Current CGPA:</strong>{student.cgpa}</p>
+            <p><strong>Courses Enrolled:</strong></p>
             <ul>
-              {student.courses.map((course, index) => (
+              {student.courses.map((course,index)=>(
                 <li key={index}>{course}</li>
               ))}
             </ul>
-            </div>
-          )}
-        <button className="btn" onClick={this.toggleGrades}>
-            {showGrades ? "Hide Academic Details" : "Show Academic Details"}
+          </div>
+        )}
+        <button onClick={this.toggleGrades}>
+          {showGrades ? 'Hide Details' : 'Show Details'}
         </button>
       </div>
     )
